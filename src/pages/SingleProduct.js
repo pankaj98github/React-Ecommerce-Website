@@ -8,6 +8,7 @@ import MyImage from "../components/MyImage";
 import FormatPrice from "../helper/FormatPrice";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
+import StarRating from "../components/StarRating";
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -52,8 +53,7 @@ return (
         </div>
         <div className="product-data">
           <h2>{name}</h2>
-          <p>{stars} ⭐</p>
-          <p>{reviews} reviews</p>
+          <StarRating stars={stars} reviews={reviews}/>
           <p className="product-data-price">
             MRP : &nbsp;
             <del>
@@ -163,7 +163,6 @@ const Wrapper = styled.section`
     hr {
       max-width: 100%;
       width: 90%;
-      /* height: 0.2rem; */
       border: 0.1rem solid #000;
       color: red;
     }

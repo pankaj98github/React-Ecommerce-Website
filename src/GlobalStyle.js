@@ -12,8 +12,6 @@ export const GlobalStyle = createGlobalStyle`
 
 html {
   font-size: 62.5%;
-  /* scroll-behavior: smooth; */
-  /* 1rem = 10px */
   overflow-x: hidden;
 }
 
@@ -57,8 +55,7 @@ h1 {
    color: ${({ theme }) => theme.colors.heading};
    font-size: 4.4rem;
    font-weight: 300;
-   white-space: normal;
-  
+   white-space: normal;  
   }
 
 h3 {
