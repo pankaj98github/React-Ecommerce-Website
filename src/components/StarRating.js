@@ -5,7 +5,6 @@ import styled from "styled-components";
 const StarRating = ({ stars, reviews }) => {
   const ratingStar = Array.from({ length: 5 }, (curEle, index) => {
     let number = index + 0.5;
-
     return (
       <span key={index}>
         {stars >= index + 1 ? (
@@ -40,10 +39,6 @@ const Wrapper = styled.section`
 .icon {
     font-size: 2rem;
     color: orange;
-}
-
-.empty-icon{
-    font-size: 2.6rem;
 }
 
 p{
