@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {FaCheck} from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
+import CartAmount from "./CartAmount";
 
 const AddToCart = ({ products }) => {
   const { id, colors, stock } = products;
-
   const [color, setColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
+
+  const setIncrease = () => {
+    amount < stock ? setAmount(amount + 1) : setAmount(stock);
+  };
+
+  const setDecrease = () => {
+    amount > 1 ? setAmount(amount - 1) : setAmount(1);
+  };
 
   return (
     <Wrapper>
       <div className="colors">
         <p>
-          Colors: &nbsp;
+          Colors : &nbsp;
           {colors.map((curColor) => {
             return (
               <button
@@ -20,12 +29,17 @@ const AddToCart = ({ products }) => {
                 className={color === curColor ? "btnStyle active" : "btnStyle"}
                 onClick={() => setColor(curColor)}
               >
-                {color === curColor ? <FaCheck className="checkStyle"/> : null}
+                {color === curColor ? <FaCheck className="checkStyle" /> : null}
               </button>
             );
           })}
         </p>
       </div>
+      <CartAmount
+        amount={amount}
+        setIncrease={setIncrease}
+        setDecrease={setDecrease}
+      />
     </Wrapper>
   );
 };
@@ -77,7 +91,8 @@ const Wrapper = styled.section`
     }
 
     .amount-style {
-      font-size: 2.4rem;
+      font-size: 2rem;
+      margin: 0 1rem;
       color: ${({ theme }) => theme.colors.btn};
     }
   }
