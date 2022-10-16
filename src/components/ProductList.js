@@ -1,35 +1,32 @@
+import React from 'react'
 import { useProductContext } from '../context/productcontext';
 import styled from 'styled-components';
-import Product from '../pages/Product';
+import AllProducts from './AllProducts';
 
-const FeatureProduct = () => {
-    const { isLoading, featureProducts } = useProductContext();
-    if(isLoading) {
-        return (
-          <h3 style={{ textAlign: "center" }}>
-            <img src="../images/Ghost.gif" alt="loading" />
-          </h3>
-        );
+const ProductList = () => {
+    const {isLoading, products} = useProductContext();
+    if (isLoading) {
+      return (
+        <h3 style={{ textAlign: "center" }}>
+          <img src="../images/Ghost.gif" alt="loading" />
+        </h3>
+      );
     }
   return (
     <Wrapper>
-      <div className="section">
-        <div className="container">
-            <div className="intro-data">Check Now!</div>
-            <div className="common-heading">Our Feature Services</div>
-            <div className='grid grid-three-column'>
-                {featureProducts.map((curElem) => {
-                    return <Product key={curElem.id} {...curElem} />
-                })}
-            </div>
-        </div>
+      <div className='grid grid-three-column'>
+        {
+            products.map((curEle) => {
+                return <AllProducts key={curEle.id} {...curEle}/>
+            })
+        }
       </div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
-  padding: 9rem 0;
+  padding: 7rem 0;
   background-color: ${({ theme }) => theme.colors.bg};
   .container {
     max-width: 120rem;
@@ -85,7 +82,8 @@ const Wrapper = styled.section`
       padding: 0 2rem;
     }
     .card-data-flex {
-      margin: 2rem 0;
+      margin: 0.5rem 0;
+      color: black;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -119,4 +117,4 @@ const Wrapper = styled.section`
   }
 `;
 
-export default FeatureProduct;
+export default ProductList
