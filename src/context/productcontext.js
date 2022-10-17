@@ -6,7 +6,7 @@ const AppContext = createContext();
 
 const API = "https://api.pujakaitem.com/api/products";
 
-const initailState = {
+const initialState = {
   isLoading: false,
   isError: false,
   products: [],
@@ -16,7 +16,7 @@ const initailState = {
 };
 
 const AppProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initailState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   // function for first API call
   const getProducts = async (url) => {
