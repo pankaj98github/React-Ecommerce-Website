@@ -7,7 +7,8 @@ const FilterContext = createContext();
 const initialState = {
     filter_products: [],
     all_products: [],
-    grid_view: false,
+    grid_view: true,
+    sorting_value: "lowest",
 }
 
 const FilterProvider = ({children}) => {
@@ -22,11 +23,19 @@ const FilterProvider = ({children}) => {
         return dispatch({type: "SET_LIST_VIEW"});
     }
 
+    const sorting = () => {
+        dispatch({type: "GET_SORT_VALUE"});
+    }
+
+    useEffect(() => {
+        dispatch({type:"SORTING_PRODUCTS"})
+    }, [products, state.sorting_value]);
+
     useEffect(() => {
         dispatch({type: "SET_FILTER_PRODUCTS", payload: products})
     }, [products]);
 
-    return <FilterContext.Provider value={{...state, setGridView, setListView}}>{children}</FilterContext.Provider>
+    return <FilterContext.Provider value={{...state, setGridView, setListView, sorting}}>{children}</FilterContext.Provider>
 };
 
 const useFilterContext = () => {
