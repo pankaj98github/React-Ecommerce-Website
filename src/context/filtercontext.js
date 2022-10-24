@@ -23,8 +23,9 @@ const FilterProvider = ({children}) => {
         return dispatch({type: "SET_LIST_VIEW"});
     }
 
-    const sorting = () => {
-        dispatch({type: "GET_SORT_VALUE"});
+    const sorting = (e) => {
+        let userSortValue = e.target.value;
+        dispatch({type: "GET_SORT_VALUE", payload: userSortValue});
     }
 
     useEffect(() => {
