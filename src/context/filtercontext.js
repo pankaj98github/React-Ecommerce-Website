@@ -12,6 +12,7 @@ const initialState = {
     filters: {
         text: "",
         category: "all",
+        company: "all"
     }
 }
 
