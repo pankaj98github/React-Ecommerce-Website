@@ -13,11 +13,17 @@ const FilterSection = () => {
     let newVal = data.map((curEle) => {
       return curEle[property];
     });
+    if(property === "colors"){
+      // return (newVal = ["all", ...new Set([].concat(...newVal))]);
+      newVal = newVal.flat();
+    }
     return (newVal = ["all", ...new Set(newVal)]);
   };
 
   const categoryOnlyData = getUniqueData(all_products, "category");
   const companyOnlyData = getUniqueData(all_products, "company");
+  const colorsOnlyData = getUniqueData(all_products, "colors");
+  console.log(colorsOnlyData)
 
   return (
     <Wrapper>
