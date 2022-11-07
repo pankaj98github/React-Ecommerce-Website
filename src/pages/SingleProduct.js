@@ -14,7 +14,6 @@ import AddToCart from "../components/AddToCart";
 const API = "https://api.pujakaitem.com/api/products";
 
 const SingleProduct = () => {
-
   const { getSingleProducts, isSingleLoading, singleProduct } =
     useProductContext();
 
@@ -54,7 +53,7 @@ return (
         </div>
         <div className="product-data">
           <h2>{name}</h2>
-          <StarRating stars={stars} reviews={reviews}/>
+          <StarRating stars={stars} reviews={reviews} />
           <p className="product-data-price">
             MRP : &nbsp;
             <del>
@@ -100,8 +99,8 @@ return (
               <span>{category}</span>
             </p>
           </div>
-          <hr/>
-          {stock > 0 && <AddToCart products={singleProduct}/>}
+          <hr />
+          {stock > 0 && <AddToCart products={singleProduct} />}
         </div>
       </div>
     </Container>

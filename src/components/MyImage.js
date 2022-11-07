@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const MyImage = ({ img = [{ url: "" }] }) => {
-
   const [mainImage, setMainImage] = useState(img[0]);
 
   return (
@@ -76,6 +75,5 @@ const Wrapper = styled.section`
     }
   }
 `;
-
 
 export default MyImage;

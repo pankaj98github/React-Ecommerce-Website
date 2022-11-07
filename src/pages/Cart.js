@@ -1,7 +1,29 @@
 import styled from "styled-components";
+import { useCartContext } from "../context/cartcontext";
+import CartItem from "../components/CartItem";
 
 const Cart = () => {
-  return <Wrapper></Wrapper>;
+  const {cart} = useCartContext();
+  
+  return <Wrapper>
+    <div className="container">
+      <div className="cart_heading grid grid-five-column">
+        <p>Item</p>
+        <p className="cart-hide">Price</p>
+        <p>Quantity</p>
+        <p className="cart-hide">Subtotal</p>
+        <p>Remove</p>
+      </div>
+      <hr/>
+      <div className="cart-item">
+        {
+          cart.map((curEle) => {
+            return <CartItem key={curEle.id} {...curEle} />
+          })
+        }
+      </div>
+    </div>
+  </Wrapper>;
 };
 
 const Wrapper = styled.section`
@@ -73,7 +95,6 @@ const Wrapper = styled.section`
       .color-style {
         width: 1.4rem;
         height: 1.4rem;
-
         border-radius: 50%;
       }
     }
@@ -109,7 +130,7 @@ const Wrapper = styled.section`
   }
 
   .remove_icon {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #e74c3c;
     cursor: pointer;
   }
