@@ -2,56 +2,54 @@ import styled from "styled-components";
 import { useCartContext } from "../context/cartcontext";
 import CartItem from "../components/CartItem";
 import { NavLink } from "react-router-dom";
-import {Button} from "../styles/Button";
+import { Button } from "../styles/Button";
 
 const Cart = () => {
-  const {cart, clearCart} = useCartContext();
+  const { cart, clearCart } = useCartContext();
 
-  if(cart.length === 0){
-    return <EmptyDiv>
-      <h3>No Item in Cart</h3>
-    </EmptyDiv>
+  if (cart.length === 0) {
+    return (
+        <EmptyDiv>
+          <img src="../images/empty-cart.png" alt="empty" />
+        </EmptyDiv>
+    );
   }
-  
-  return <Wrapper>
-    <div className="container">
-      <div className="cart_heading grid grid-five-column">
-        <p>Item</p>
-        <p className="cart-hide">Price</p>
-        <p>Quantity</p>
-        <p className="cart-hide">Subtotal</p>
-        <p>Remove</p>
-      </div>
-      <hr/>
-      <div className="cart-item">
-        {
-          cart.map((curEle) => {
-            return <CartItem key={curEle.id} {...curEle} />
-          })
-        }
-      </div>
-      <hr/>
-      <div className="cart-two-button">
-        <NavLink to="/products">
-          <Button>Continue Shopping</Button> 
-        </NavLink>
 
-        <Button className="btn-clear" onClick={clearCart}>Clear Cart</Button>
+  return (
+    <Wrapper>
+      <div className="container">
+        <div className="cart_heading grid grid-five-column">
+          <p>Item</p>
+          <p className="cart-hide">Price</p>
+          <p>Quantity</p>
+          <p className="cart-hide">Subtotal</p>
+          <p>Remove</p>
+        </div>
+        <hr />
+        <div className="cart-item">
+          {cart.map((curEle) => {
+            return <CartItem key={curEle.id} {...curEle} />;
+          })}
+        </div>
+        <hr />
+        <div className="cart-two-button">
+          <NavLink to="/products">
+            <Button>Continue Shopping</Button>
+          </NavLink>
+
+          <Button className="btn-clear" onClick={clearCart}>
+            Clear Cart
+          </Button>
+        </div>
       </div>
-    </div>
-  </Wrapper>;
+    </Wrapper>
+  );
 };
 
 const EmptyDiv = styled.div`
   display: grid;
   place-items: center;
-  height: 50vh;
-
-  h3 {
-    font-size: 4.2rem;
-    text-transform: capitalize;
-    font-weight: 300;
-  }
+  height: 60vh;
 `;
 
 const Wrapper = styled.section`
