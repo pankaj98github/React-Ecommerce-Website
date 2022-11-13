@@ -1,18 +1,12 @@
 import React from "react";
 import FormatPrice from "../helper/FormatPrice";
 import CartAmount from "./CartAmount";
-import {FaTrash} from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { useCartContext } from "../context/cartcontext";
 
 const CartItem = ({ id, name, image, color, price, amount }) => {
-  const {removeItem} = useCartContext();
-     const setIncrease = () => {
-    //    amount < stock ? setAmount(amount + 1) : setAmount(stock);
-     };
+  const { removeItem, setIncrease, setDecrease } = useCartContext();
 
-     const setDecrease = () => {
-    //    amount > 1 ? setAmount(amount - 1) : setAmount(1);
-     };
   return (
     <div className="cart_heading grid grid-five-column">
       <div className="cart-image--name">
@@ -39,12 +33,12 @@ const CartItem = ({ id, name, image, color, price, amount }) => {
       </div>
       <CartAmount
         amount={amount}
-        setIncrease={setIncrease}
-        setDecrease={setDecrease}
+        setIncrease={() => setIncrease(id)}
+        setDecrease={() => setDecrease(id)}
       />
       <div className="cart-hide">
         <p>
-            <FormatPrice price={price * amount} />
+          <FormatPrice price={price * amount} />
         </p>
       </div>
       <div>
