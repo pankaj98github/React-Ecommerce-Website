@@ -62,45 +62,57 @@ const cartReducer = (state, action) => {
 
   if (action.type === "SET_INCREMENT") {
     let updatedProduct = state.cart.map((curEle) => {
-      if(curEle.id === action.payload){
-        let incAmount = curEle.amount + 1
-        if(incAmount >= curEle.max){
-          incAmount = curEle.max
+      if (curEle.id === action.payload) {
+        let incAmount = curEle.amount + 1;
+        if (incAmount >= curEle.max) {
+          incAmount = curEle.max;
         }
         return {
           ...curEle,
-          amount: incAmount
-        }
+          amount: incAmount,
+        };
       } else {
         return curEle;
       }
     });
     return {
       ...state,
-      cart: updatedProduct
-    }
-  };
+      cart: updatedProduct,
+    };
+  }
 
-  if(action.type === "SET_DECREMENT") {
+  if (action.type === "SET_DECREMENT") {
     let updatedProduct = state.cart.map((curEle) => {
-      if(curEle.id === action.payload){
-        let decAmount = curEle.amount - 1
-        if(decAmount <= 1) {
-           decAmount = 1
+      if (curEle.id === action.payload) {
+        let decAmount = curEle.amount - 1;
+        if (decAmount <= 1) {
+          decAmount = 1;
         }
         return {
           ...curEle,
-          amount: decAmount
-        }
+          amount: decAmount,
+        };
       } else {
         return curEle;
       }
     });
     return {
       ...state,
-      cart: updatedProduct
-    }
-  };
+      cart: updatedProduct,
+    };
+  }
+
+  if (action.type === "CART_TOTAL_ITEM") {
+    let updatedCartVal = state.cart.reduce((initialVal, curEle) => {
+      let { amount } = curEle;
+      initialVal = initialVal + amount;
+      return initialVal;
+    }, 0);
+    return {
+      ...state,
+      total_item: updatedCartVal,
+    };
+  }
 
   return state;
 };
