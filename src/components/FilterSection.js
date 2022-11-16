@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useFilterContext } from "../context/filtercontext";
 import { FaCheck } from "react-icons/fa";
 import FormatPrice from "../helper/FormatPrice";
-import {Button} from "../styles/Button";
+import { Button } from "../styles/Button";
 
 const FilterSection = () => {
   const {
@@ -60,7 +60,7 @@ const FilterSection = () => {
         </div>
       </div>
       <div className="filter-company">
-        <h3>Category</h3>
+        <h3>Company</h3>
         <form action="#">
           <select
             name="company"
@@ -129,7 +129,9 @@ const FilterSection = () => {
         />
       </div>
       <div className="filter-clear">
-        <Button className="btn" onClick={clearFilter}>Clear Filter</Button>
+        <Button className="btn" onClick={clearFilter}>
+          Clear Filter
+        </Button>
       </div>
     </Wrapper>
   );
