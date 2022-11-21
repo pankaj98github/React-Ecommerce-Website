@@ -79,7 +79,7 @@ const cartReducer = (state, action) => {
       };
 
     case "SET_DECREMENT":
-    const decProduct = state.cart.map((curEle) => {
+      const decProduct = state.cart.map((curEle) => {
         if (curEle.id === action.payload) {
           let decAmount = curEle.amount - 1;
           if (decAmount <= 1) {

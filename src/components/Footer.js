@@ -25,7 +25,7 @@ const Footer = () => {
         <div className="container grid grid-four-column">
           <div className="footer-about">
             <h3>Pankaj Kumbhare 😃</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <p>Design & Developed</p>
           </div>
 
           <div className="footer-subscribe">

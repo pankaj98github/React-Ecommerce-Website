@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles/Button";
 
-const HeroSection = ({myData}) => {
-    const {name} = myData;
+const HeroSection = ({ myData }) => {
+  const { name } = myData;
   return (
     <Wrapper>
       <div className="container">
@@ -13,9 +13,9 @@ const HeroSection = ({myData}) => {
             <p className="intro-data">Welcome to</p>
             <h1>{name}</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis
-              numquam velit unde enim fugit laudantium similique optio
-              assumenda, a molestias!
+              This e-commerce store is one that allows people to buy and sell
+              physical goods, services, and digital products over the internet
+              rather than at a brick-and-mortar location.
             </p>
             <NavLink>
               <Button>Shop Now</Button>
