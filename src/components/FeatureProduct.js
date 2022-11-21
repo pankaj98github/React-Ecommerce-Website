@@ -1,32 +1,32 @@
-import { useProductContext } from '../context/productcontext';
-import styled from 'styled-components';
+import { useProductContext } from "../context/productcontext";
+import styled from "styled-components";
 import Product from "./Product";
 
 const FeatureProduct = () => {
-    const { isLoading, featureProducts } = useProductContext();
-    if(isLoading) {
-        return (
-          <h3 style={{ textAlign: "center" }}>
-            <img src="../images/Ghost.gif" alt="loading" />
-          </h3>
-        );
-    }
+  const { isLoading, featureProducts } = useProductContext();
+  if (isLoading) {
+    return (
+      <h3 style={{ textAlign: "center" }}>
+        <img src="../images/Ghost.gif" alt="loading" />
+      </h3>
+    );
+  }
   return (
     <Wrapper>
       <div className="section">
         <div className="container">
-            <div className="intro-data">Check Now!</div>
-            <div className="common-heading">Our Feature Services</div>
-            <div className='grid grid-three-column'>
-                {featureProducts.map((curElem) => {
-                    return <Product key={curElem.id} {...curElem} />
-                })}
-            </div>
+          <div className="intro-data">Check Now!</div>
+          <div className="common-heading">Our Feature Services</div>
+          <div className="grid grid-three-column">
+            {featureProducts.map((curElem) => {
+              return <Product key={curElem.id} {...curElem} />;
+            })}
+          </div>
         </div>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   padding: 9rem 0;

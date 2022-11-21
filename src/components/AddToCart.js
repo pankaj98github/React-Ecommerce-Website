@@ -4,10 +4,10 @@ import { FaCheck } from "react-icons/fa";
 import CartAmount from "./CartAmount";
 import { NavLink } from "react-router-dom";
 import { Button } from "../styles/Button";
-import {useCartContext} from "../context/cartcontext";
+import { useCartContext } from "../context/cartcontext";
 
 const AddToCart = ({ products }) => {
-  const {addToCart} = useCartContext();
+  const { addToCart } = useCartContext();
   const { id, colors, stock } = products;
   const [color, setColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
@@ -103,7 +103,7 @@ const Wrapper = styled.section`
     .amount-style {
       font-size: 1.6rem;
       margin: 0 1rem;
-      color: black
+      color: black;
     }
   }
 `;

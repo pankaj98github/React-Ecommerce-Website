@@ -5,10 +5,13 @@ import { BsCart4 } from "react-icons/bs";
 import { CgMenu, CgClose } from "react-icons/cg";
 import { useState } from "react";
 import { useCartContext } from "../context/cartcontext";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Button } from "../styles/Button";
 
 const Navbar = () => {
   const [menuIcon, setMenuIcon] = useState(false);
   const { total_item } = useCartContext();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   return (
     <Nav>
@@ -50,6 +53,21 @@ const Navbar = () => {
               Contact
             </NavLink>
           </li>
+
+          {isAuthenticated ? (
+            <li>
+              <Button
+                onClick={() => logout({ returnTo: window.location.origin })}
+              >
+                Log Out
+              </Button>
+            </li>
+          ) : (
+            <li>
+              <Button onClick={() => loginWithRedirect()}>Log In</Button>;
+            </li>
+          )}
+
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <BsCart4 className="cart-trolley" />
