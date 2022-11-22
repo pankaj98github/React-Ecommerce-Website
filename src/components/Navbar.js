@@ -11,7 +11,7 @@ import { Button } from "../styles/Button";
 const Navbar = () => {
   const [menuIcon, setMenuIcon] = useState(false);
   const { total_item } = useCartContext();
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
   return (
     <Nav>
@@ -53,6 +53,13 @@ const Navbar = () => {
               Contact
             </NavLink>
           </li>
+
+          {isAuthenticated && (
+            <div className="one_line">
+              <img src={user.picture} alt={user.name} />
+              <p>{user.name}</p>
+            </div>
+          )}
 
           {isAuthenticated ? (
             <li>
@@ -115,6 +122,18 @@ const Nav = styled.nav`
       }
     }
   }
+
+  .one_line{
+    display: flex;
+
+  }
+
+  img{
+    height: 4rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
   .mobile-navbar-btn {
     display: none;
     background-color: transparent;
